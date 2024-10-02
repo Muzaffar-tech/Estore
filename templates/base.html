@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Estore - Shop</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% include 'components/_styles.html' %}
+        <style>
+            .success{
+            color: green
+            }
+
+            .error{
+            color: red
+            }
+        </style>
+   </head>
+
+   <body>
+
+    <!-- Preloader Start -->
+    {% include 'components/_loader.html' %}
+
+    <!-- Preloader Start -->
+
+    <header>
+        <!-- Header Start -->
+    {% include 'components/_header.html' %}
+
+        <!-- Header End -->
+    </header>
+
+    <main>
+
+        <!-- slider Area Start -->
+        {% if request.path == '/' %}
+        {% include 'components/_slider.html' %}
+        {% else %}
+        {% include 'components/_inner_banner.html' %}
+        {% endif %}
+
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+        <!-- slider Area End-->
+    {% block content %}
+    {% endblock content %}
+    {% include 'components/_footer.html' %}
+
+    </main>
+
+    {% include 'components/_scripts.html' %}
+
+
+
+    </body>
+</html>
